@@ -5,12 +5,17 @@ Public Class Salary
     Dim Conn As New MySqlConnection
     Dim COMMAND As New MySqlCommand
 
+    Dim Host As String = Environ("DB_HOST")
+    Dim Username As String = Environ("USERNAME")
+    Dim Password As String = Environ("DPASS")
+    Dim DB As String = Environ("DB")
+
     Private Sub FetchEmployeeData()
         If EmpId.Text = "" Then
             MsgBox("Enter employee id to search for")
         Else
             Conn = New MySqlConnection With {
-                .ConnectionString = "server=localhost; userid=root; password=lost1234; database=employee_db"
+               .ConnectionString = "server=" + Host + ";" + "userid=" + Username + ";" + "password=" + Password + ";" + "database=" + DB + ";"
                 }
             Conn.Open()
             Dim query = "SELECT name, pos, education, sal FROM employee WHERE id='" & EmpId.Text & "'"
@@ -74,4 +79,7 @@ Public Class Salary
         Application.Exit()
     End Sub
 
+    Private Sub Salary_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

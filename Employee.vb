@@ -3,6 +3,10 @@
 Public Class Employee
     Dim Conn As New MySqlConnection
     Dim COMMAND As New MySqlCommand
+    Dim Host As String = Environ("DB_HOST")
+    Dim Username As String = Environ("USERNAME")
+    Dim Password As String = Environ("DPASS")
+    Dim DB As String = Environ("DB")
 
     Private Sub Employee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Populate()
@@ -107,7 +111,7 @@ Public Class Employee
     End Function
     Private Sub Populate()
         Conn = New MySqlConnection With {
-            .ConnectionString = "server=localhost; userid=root; password=lost1234; database=employee_db"
+            .ConnectionString = "server=" + Host + ";" + "userid=" + Username + ";" + "password=" + Password + ";" + "database=" + DB + ";"
         }
         Conn.Open()
         Dim sql = "SELECT * FROM employee"
@@ -124,7 +128,7 @@ Public Class Employee
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Conn = New MySqlConnection With {
-            .ConnectionString = "server=localhost; userid=root; password=lost1234; database=employee_db"
+            .ConnectionString = "server=" + Host + ";" + "userid=" + Username + ";" + "password=" + Password + ";" + "database=" + DB + ";"
         }
         Dim Sal As Decimal = CalculateSalary(ComboBoxPosition.SelectedItem.ToString(), ComboBoxEducation.SelectedItem.ToString())
         Try
@@ -163,7 +167,7 @@ Public Class Employee
         Else
             Try
                 Conn = New MySqlConnection With {
-                    .ConnectionString = "server=localhost; userid=root; password=lost1234; database=employee_db"
+                    .ConnectionString = "server=" + Host + ";" + "userid=" + Username + ";" + "password=" + Password + ";" + "database=" + DB + ";"
         }
                 Conn.Open()
                 Dim query As String
@@ -200,7 +204,7 @@ Public Class Employee
             MsgBox("Nothing to Edit")
         Else
             Conn = New MySqlConnection With {
-                .ConnectionString = "server=localhost , userid=root, password='lost1234', database=employee_db"
+               .ConnectionString = "server=" + Host + ";" + "userid=" + Username + ";" + "password=" + Password + ";" + "database=" + DB + ";"
         }
             Conn.Open()
             Dim query As String

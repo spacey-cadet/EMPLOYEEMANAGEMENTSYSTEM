@@ -1,9 +1,15 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
+Imports MySql.Data.MySqlClient
 
 Public Class EmployeeDetails
 
     Dim Conn As New MySqlConnection
     Dim COMMAND As New MySqlCommand
+
+    Dim Host As String = Environ("DB_HOST")
+    Dim Username As String = Environ("USERNAME")
+    Dim Password As String = Environ("DPASS")
+    Dim DB As String = Environ("DB")
 
 
     Private Sub EmployeeDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -14,7 +20,7 @@ Public Class EmployeeDetails
             MsgBox("Enter employee id to search for")
         Else
             Conn = New MySqlConnection With {
-                .ConnectionString = "server=localhost; userid=root; password=lost1234; database=employee_db"
+                .ConnectionString = "server=" + Host + ";" + "userid=" + Username + ";" + "password=" + Password + ";" + "database=" + DB + ";"
                 }
             Conn.Open()
             Dim query = "SELECT * FROM employee WHERE id='" & EmpId.Text & "'"
