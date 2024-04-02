@@ -14,31 +14,45 @@ Public Class Salary
         If EmpId.Text = "" Then
             MsgBox("Enter employee id to search for")
         Else
-            Conn = New MySqlConnection With {
+            Try
+                Conn = New MySqlConnection With {
                .ConnectionString = "server=" + Host + ";" + "userid=" + Username + ";" + "password=" + Password + ";" + "database=" + DB + ";"
                 }
-            Conn.Open()
-            Dim query = "SELECT name, pos, education, sal FROM employee WHERE id='" & EmpId.Text & "'"
-            COMMAND = New MySqlCommand(query, Conn)
-            Dim dt As DataTable
-            dt = New DataTable
-            Dim sda As MySqlDataAdapter
-            sda = New MySqlDataAdapter(COMMAND)
-            sda.Fill(dt)
-            For Each dr As DataRow In dt.Rows
-                NameTb.Text = dr(1).ToString()
-                PosTb.Text = dr(2).ToString()
-                EdlevTb.Text = dr(3).ToString()
-                SalTb.Text = dr(4).ToString()
+                Conn.Open()
+                Dim query = "SELECT name, pos, education, sal FROM employee WHERE id='" & EmpId.Text & "'"
+                COMMAND = New MySqlCommand(query, Conn)
+                Dim dt As DataTable
+                dt = New DataTable
+                Dim sda As MySqlDataAdapter
+                sda = New MySqlDataAdapter(COMMAND)
+
+                sda.Fill(dt)
+
+                If dt.Rows.Count > 0 Then
+                    For Each dr As DataRow In dt.Rows
+                        NameTb.Text = dr(0).ToString()
+                        PosTb.Text = dr(1).ToString()
+                        EdlevTb.Text = dr(2).ToString()
+                        SalTb.Text = dr(3).ToString()
 
 
-                NameTb.Visible = True
-                PosTb.Visible = True
-                EdlevTb.Visible = True
-                SalTb.Visible = True
+                        NameTb.Visible = True
+                        PosTb.Visible = True
+                        EdlevTb.Visible = True
+                        SalTb.Visible = True
+                    Next
+                Else
+                    MsgBox("Employee not found")
+                End If
 
-            Next
-            Conn.Close()
+
+                Conn.Close()
+
+            Catch ex As Exception
+                MsgBox("An error occured: " & ex.Message)
+
+            End Try
+
         End If
     End Sub
 

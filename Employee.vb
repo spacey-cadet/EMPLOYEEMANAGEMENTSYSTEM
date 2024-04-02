@@ -193,9 +193,9 @@ Public Class Employee
         NameTextBox.Text = row.Cells(1).Value.ToString()
         AddressTextBox.Text = row.Cells(2).Value.ToString()
         PhoneTextBox.Text = row.Cells(3).Value.ToString()
-        ComboBoxGender.SelectedItem = row.Cells(4).Value
-        ComboBoxPosition.SelectedItem = row.Cells(5).Value
-        ComboBoxEducation.SelectedItem = row.Cells(6).Value
+        ComboBoxGender.Text = row.Cells(4).Value
+        ComboBoxPosition.Text = row.Cells(5).Value
+        ComboBoxEducation.Text = row.Cells(6).Value
         EmpDOB.Value = row.Cells(7).Value
 
     End Sub

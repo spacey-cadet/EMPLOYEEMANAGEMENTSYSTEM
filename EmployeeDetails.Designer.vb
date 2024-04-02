@@ -171,7 +171,7 @@ Partial Class EmployeeDetails
         Button3.Name = "Button3"
         Button3.Size = New Size(75, 23)
         Button3.TabIndex = 32
-        Button3.Text = "Fetch"
+        Button3.Text = "See Details"
         Button3.UseVisualStyleBackColor = True
         ' 
         ' Panel1

@@ -132,7 +132,7 @@ Partial Class Salary
         Button3.Name = "Button3"
         Button3.Size = New Size(75, 23)
         Button3.TabIndex = 35
-        Button3.Text = "FetchSalary"
+        Button3.Text = "See Salary"
         Button3.UseVisualStyleBackColor = True
         ' 
         ' EmpId

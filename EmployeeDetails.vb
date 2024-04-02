@@ -19,36 +19,47 @@ Public Class EmployeeDetails
         If EmpId.Text = "" Then
             MsgBox("Enter employee id to search for")
         Else
-            Conn = New MySqlConnection With {
+            Try
+                Conn = New MySqlConnection With {
                 .ConnectionString = "server=" + Host + ";" + "userid=" + Username + ";" + "password=" + Password + ";" + "database=" + DB + ";"
                 }
-            Conn.Open()
-            Dim query = "SELECT * FROM employee WHERE id='" & EmpId.Text & "'"
-            COMMAND = New MySqlCommand(query, Conn)
-            Dim dt As DataTable
-            dt = New DataTable
-            Dim sda As MySqlDataAdapter
-            sda = New MySqlDataAdapter(COMMAND)
-            sda.Fill(dt)
-            For Each dr As DataRow In dt.Rows
-                NameTb.Text = dr(1).ToString()
-                AddressTb.Text = dr(2).ToString()
-                PhoneTb.Text = dr(3).ToString()
-                GenderTb.Text = dr(4).ToString()
-                PosTb.Text = dr(5).ToString()
-                EdlevTb.Text = dr(6).ToString()
-                DOBTb.Text = dr(7).ToString()
+                Conn.Open()
+                Dim query = "SELECT * FROM employee WHERE id='" & EmpId.Text & "'"
+                COMMAND = New MySqlCommand(query, Conn)
+                Dim dt As DataTable
+                dt = New DataTable
+                Dim sda As MySqlDataAdapter
+                sda = New MySqlDataAdapter(COMMAND)
+                sda.Fill(dt)
+                If dt.Rows.Count > 0 Then
+                    For Each dr As DataRow In dt.Rows
+                        NameTb.Text = dr(0).ToString()
+                        AddressTb.Text = dr(1).ToString()
+                        PhoneTb.Text = dr(2).ToString()
+                        GenderTb.Text = dr(3).ToString()
+                        PosTb.Text = dr(4).ToString()
+                        EdlevTb.Text = dr(5).ToString()
+                        DOBTb.Text = dr(6).ToString()
 
-                NameTb.Visible = True
-                AddressTb.Visible = True
-                PhoneTb.Visible = True
-                GenderTb.Visible = True
-                PosTb.Visible = True
-                EdlevTb.Visible = True
-                DOBTb.Visible = True
+                        NameTb.Visible = True
+                        AddressTb.Visible = True
+                        PhoneTb.Visible = True
+                        GenderTb.Visible = True
+                        PosTb.Visible = True
+                        EdlevTb.Visible = True
+                        DOBTb.Visible = True
 
-            Next
-            Conn.Close()
+                    Next
+                Else
+                    MsgBox("Employee not found")
+                End If
+                Conn.Close()
+
+            Catch ex As Exception
+                MsgBox("An error occured: " & ex.Message)
+
+            End Try
+
         End If
     End Sub
 
