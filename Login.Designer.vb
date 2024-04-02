@@ -31,6 +31,7 @@ Partial Class Login
         Button1 = New Button()
         Label5 = New Label()
         Label6 = New Label()
+        Label7 = New Label()
         SuspendLayout()
         ' 
         ' Label1
@@ -115,12 +116,23 @@ Partial Class Login
         Label6.TabIndex = 8
         Label6.Text = "X"
         ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Font = New Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label7.Location = New Point(679, 9)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(18, 18)
+        Label7.TabIndex = 9
+        Label7.Text = "X"
+        ' 
         ' Login
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateGray
         ClientSize = New Size(709, 388)
+        Controls.Add(Label7)
         Controls.Add(Label6)
         Controls.Add(Label5)
         Controls.Add(Button1)
@@ -146,4 +158,5 @@ Partial Class Login
     Friend WithEvents Button1 As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
 End Class

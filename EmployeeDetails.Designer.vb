@@ -37,6 +37,7 @@ Partial Class EmployeeDetails
         Label9 = New Label()
         Button3 = New Button()
         Panel1 = New Panel()
+        Label10 = New Label()
         NameTb = New TextBox()
         AddressTb = New TextBox()
         PhoneTb = New TextBox()
@@ -46,7 +47,6 @@ Partial Class EmployeeDetails
         DOBTb = New TextBox()
         PrintDocument1 = New Printing.PrintDocument()
         PrintPreviewDialog1 = New PrintPreviewDialog()
-        Label10 = New Label()
         Panel1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -184,6 +184,16 @@ Partial Class EmployeeDetails
         Panel1.Size = New Size(805, 60)
         Panel1.TabIndex = 33
         ' 
+        ' Label10
+        ' 
+        Label10.AutoSize = True
+        Label10.Font = New Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label10.Location = New Point(774, 12)
+        Label10.Name = "Label10"
+        Label10.Size = New Size(18, 18)
+        Label10.TabIndex = 7
+        Label10.Text = "X"
+        ' 
         ' NameTb
         ' 
         NameTb.ForeColor = SystemColors.ControlText
@@ -260,16 +270,6 @@ Partial Class EmployeeDetails
         PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), Icon)
         PrintPreviewDialog1.Name = "PrintPreviewDialog1"
         PrintPreviewDialog1.Visible = False
-        ' 
-        ' Label10
-        ' 
-        Label10.AutoSize = True
-        Label10.Font = New Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label10.Location = New Point(774, 12)
-        Label10.Name = "Label10"
-        Label10.Size = New Size(18, 18)
-        Label10.TabIndex = 7
-        Label10.Text = "X"
         ' 
         ' EmployeeDetails
         ' 

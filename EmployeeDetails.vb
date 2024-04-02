@@ -6,10 +6,10 @@ Public Class EmployeeDetails
     Dim Conn As New MySqlConnection
     Dim COMMAND As New MySqlCommand
 
-    Dim Host As String = Environ("DB_HOST")
-    Dim Username As String = Environ("USERNAME")
-    Dim Password As String = Environ("DPASS")
-    Dim DB As String = Environ("DB")
+    Dim Host As String = "localhost"
+    Dim Username As String = "root"
+    Dim Password As String = "lost1234"
+    Dim DB As String = "employee_db"
 
 
     Private Sub EmployeeDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -83,4 +83,6 @@ Public Class EmployeeDetails
     Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click
         Application.Exit()
     End Sub
+
+
 End Class

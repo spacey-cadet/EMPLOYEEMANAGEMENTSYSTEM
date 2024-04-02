@@ -1,12 +1,13 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Globalization
+Imports MySql.Data.MySqlClient
 
 Public Class Employee
     Dim Conn As New MySqlConnection
     Dim COMMAND As New MySqlCommand
-    Dim Host As String = Environ("DB_HOST")
-    Dim Username As String = Environ("USERNAME")
-    Dim Password As String = Environ("DPASS")
-    Dim DB As String = Environ("DB")
+    Dim Host As String = "localhost"
+    Dim Username As String = "root"
+    Dim Password As String = "lost1234"
+    Dim DB As String = "employee_db"
 
     Private Sub Employee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Populate()
@@ -134,7 +135,7 @@ Public Class Employee
         Try
             Conn.Open()
             Dim Query As String
-            Query = "INSERT INTO employee(name,address, phone, sex, pos,education, dob, sal) VALUES ('" & NameTextBox.Text & "','" & AddressTextBox.Text & "', '" & PhoneTextBox.Text & "', '" & ComboBoxGender.SelectedItem.ToString() & "', '" & ComboBoxPosition.SelectedItem.ToString() & "',  '" & ComboBoxEducation.SelectedItem.ToString() & "', '" & EmpDOB.Value & "', '" & Sal & "')"
+            Query = "INSERT INTO employee(name,address, phone, sex, pos,education, dob, sal) VALUES ('" & NameTextBox.Text & "','" & AddressTextBox.Text & "', '" & PhoneTextBox.Text & "', '" & ComboBoxGender.SelectedItem.ToString() & "', '" & ComboBoxPosition.SelectedItem.ToString() & "',  '" & ComboBoxEducation.SelectedItem.ToString() & "', '" & EmpDOB.Value.Date.ToString("yyyy/MM/dd") & "', '" & Sal & "')"
             COMMAND = New MySqlCommand(Query, Conn)
             COMMAND.ExecuteNonQuery()
             MsgBox("Employee added")
@@ -192,9 +193,9 @@ Public Class Employee
         NameTextBox.Text = row.Cells(1).Value.ToString()
         AddressTextBox.Text = row.Cells(2).Value.ToString()
         PhoneTextBox.Text = row.Cells(3).Value.ToString()
-        ComboBoxGender.SelectedItem = row.Cells(4).Value.ToString()
-        ComboBoxPosition.SelectedItem = row.Cells(5).Value.ToString()
-        ComboBoxEducation.SelectedItem = row.Cells(6).Value.ToString()
+        ComboBoxGender.SelectedItem = row.Cells(4).Value
+        ComboBoxPosition.SelectedItem = row.Cells(5).Value
+        ComboBoxEducation.SelectedItem = row.Cells(6).Value
         EmpDOB.Value = row.Cells(7).Value
 
     End Sub
@@ -209,7 +210,7 @@ Public Class Employee
             Conn.Open()
             Dim query As String
             Dim Sal As Decimal = CalculateSalary(ComboBoxPosition.SelectedItem.ToString(), ComboBoxEducation.SelectedItem.ToString())
-            query = " UPDATE employee SET name='" & NameTextBox.Text & "' , address= '" & AddressTextBox.Text & "', phone = '" & PhoneTextBox.Text & "', sex= '" & ComboBoxGender.SelectedItem.ToString() & ",  pos='" & ComboBoxPosition.SelectedItem.ToString() & "',education= '" & ComboBoxEducation.SelectedItem.ToString() & "', dob= '" & EmpDOB.Value & "', sal= '" & Sal & "' WHERE id=" & key & ""
+            query = " UPDATE employee SET name='" & NameTextBox.Text & "' , address= '" & AddressTextBox.Text & "', phone = '" & PhoneTextBox.Text & "', sex= '" & ComboBoxGender.SelectedItem.ToString() & "',  pos='" & ComboBoxPosition.SelectedItem.ToString() & "',education= '" & ComboBoxEducation.SelectedItem.ToString() & "', dob= '" & EmpDOB.Value.Date.ToString("yyyy/MM/dd") & "', sal= '" & Sal & "' WHERE id='" & key & "'"
             COMMAND = New MySqlCommand(query, Conn)
             COMMAND.ExecuteNonQuery()
             MsgBox("Employee updated")

@@ -5,10 +5,10 @@ Public Class Salary
     Dim Conn As New MySqlConnection
     Dim COMMAND As New MySqlCommand
 
-    Dim Host As String = Environ("DB_HOST")
-    Dim Username As String = Environ("USERNAME")
-    Dim Password As String = Environ("DPASS")
-    Dim DB As String = Environ("DB")
+    Dim Host As String = "localhost"
+    Dim Username As String = "root"
+    Dim Password As String = "lost1234"
+    Dim DB As String = "employee_db"
 
     Private Sub FetchEmployeeData()
         If EmpId.Text = "" Then
