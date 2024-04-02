@@ -33,13 +33,13 @@ Public Class EmployeeDetails
                 sda.Fill(dt)
                 If dt.Rows.Count > 0 Then
                     For Each dr As DataRow In dt.Rows
-                        NameTb.Text = dr(0).ToString()
-                        AddressTb.Text = dr(1).ToString()
-                        PhoneTb.Text = dr(2).ToString()
-                        GenderTb.Text = dr(3).ToString()
-                        PosTb.Text = dr(4).ToString()
-                        EdlevTb.Text = dr(5).ToString()
-                        DOBTb.Text = dr(6).ToString()
+                        NameTb.Text = dr(1).ToString()
+                        AddressTb.Text = dr(2).ToString()
+                        PhoneTb.Text = dr(3).ToString()
+                        GenderTb.Text = dr(4).ToString()
+                        PosTb.Text = dr(5).ToString()
+                        EdlevTb.Text = dr(6).ToString()
+                        DOBTb.Text = dr(7).ToString()
 
                         NameTb.Visible = True
                         AddressTb.Visible = True
@@ -81,14 +81,14 @@ Public Class EmployeeDetails
         e.Graphics.DrawString("Employee Management System", New Font("Century Gothic", 25), Brushes.DarkGreen, 180, 40)
         e.Graphics.DrawString("******EMPLOYEE DETAILS********", New Font("Arial", 20), Brushes.Crimson, 330, 100)
         e.Graphics.DrawString("Name: " + NameTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 190)
-        e.Graphics.DrawString("Employee Id: " + EmpId.Text, New Font("century Gothic", 20), Brushes.Black, 150, 190)
-        e.Graphics.DrawString("Address: " + AddressTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 190)
-        e.Graphics.DrawString("Phone: " + PhoneTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 190)
-        e.Graphics.DrawString("Position: " + PosTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 190)
-        e.Graphics.DrawString("Education: " + EdlevTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 190)
-        e.Graphics.DrawString("Gender: " + GenderTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 190)
-        e.Graphics.DrawString("DOB: " + DOBTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 190)
-        e.Graphics.DrawString("=================", New Font("Century Gothic", 15), Brushes.DarkGreen, 150, 150)
+        e.Graphics.DrawString("Employee Id: " + EmpId.Text, New Font("century Gothic", 20), Brushes.Black, 150, 280)
+        e.Graphics.DrawString("Address: " + AddressTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 360)
+        e.Graphics.DrawString("Phone: " + PhoneTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 440)
+        e.Graphics.DrawString("Position: " + PosTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 520)
+        e.Graphics.DrawString("Education: " + EdlevTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 600)
+        e.Graphics.DrawString("Gender: " + GenderTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 680)
+        e.Graphics.DrawString("DOB: " + DOBTb.Text, New Font("century Gothic", 20), Brushes.Black, 150, 760)
+        e.Graphics.DrawString("=================", New Font("Century Gothic", 15), Brushes.DarkGreen, 150, 840)
     End Sub
 
     Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click
